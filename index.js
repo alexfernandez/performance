@@ -1,0 +1,170 @@
+'use strict';
+
+/**
+ * Performance measurements.
+ * (C) 2014 Alejandro Fernández.
+ */
+
+// requires
+var crypto = require('crypto');
+var util = require('util');
+var Log = require('log');
+
+// constants
+var TIME = 1000;
+var ITERATIONS = 1000;
+
+// globals
+var log = new Log('info');
+var token = 'mpQFJMt/dfnp5L8HtTAcAxYw+wSIlg==';
+var original = {
+	a: 'a',
+	b: 'b',
+};
+
+
+/**
+ * Run all performance benchmarks.
+ */
+function runBenchmarks()
+{
+	log.info('Running benchmarks');
+	var array = [];
+	var object = {};
+	for (var i = 1; i < 5; i++)
+	{
+		array.push(i);
+		object[i] = i;
+	}
+	benchmark('nil', function()
+	{
+	});
+	benchmark('util._extend()', function()
+	{
+		return util._extend(original);
+	});
+	benchmark('sha1-token', function()
+	{
+		var value = '' + Date.now() + Math.random();
+		var hash = crypto.createHash('sha1');
+		return hash.update(value).digest("hex").toLowerCase();
+	});
+	benchmark('sha256-token', function()
+	{
+		var value = '' + Date.now() + Math.random();
+		var hash = crypto.createHash('sha256');
+		return hash.update(value).digest("hex").toLowerCase();
+	});
+	benchmark('replaceAll()', function()
+	{
+		return token.replaceAll('=', '').replaceAll('/', '').replaceAll('+', '').toLowerCase();
+	});
+	benchmark('match().join()', function()
+	{
+		return token.match(/\w+/g).join('').toLowerCase();
+	});
+	benchmark('for().toLowerCase()', function()
+	{
+		var result = '';
+		for (var i = 0; i < 25; i++)
+		{
+			var c = token[i];
+			if (c != '+' && c != '/' && c != '=')
+			{
+				result += c.toLowerCase();
+			}
+		}
+		return result;
+	});
+	benchmark('for().charCodeAt()', function()
+	{
+		var result = '';
+		for (var i = 0; i < 25; i++)
+		{
+			var c = token.charCodeAt(i);
+			if (c > 96)
+			{
+				result += String.fromCharCode(c);
+			}
+			else if (c > 64)
+			{
+				result += String.fromCharCode(c + 32);
+			}
+		}
+		return result;
+	});
+	benchmark('timestamp', function()
+	{
+		return Date.now() + "_" + Math.random().toString().substring(2);
+	});
+	benchmark('array access', function()
+	{
+		for (var index in array)
+		{
+			if (array[index] == '6')
+			{
+				return array[index];
+			}
+		}
+		return null;
+	});
+	benchmark('object access', function()
+	{
+		for (var key in object)
+		{
+			if (object[key] == '6')
+			{
+				return object[key];
+			}
+		}
+		return null;
+	});
+	benchmark('string +', function()
+	{
+		return 'a' + 'b' + '12' + 'd';
+	});
+	benchmark('string replace', function()
+	{
+		return 'abcd'.replace('12');
+	});
+	benchmark('string replace all', function()
+	{
+		return 'abcd'.replaceAll('12');
+	});
+	var number = '1';
+	benchmark('parseInt', function()
+	{
+		return parseInt(number);
+	});
+	benchmark('| 0', function()
+	{
+		return number | 0;
+	});
+	benchmark('Math.random()', function()
+	{
+		var r = parseInt(Math.random() * 1000000000);
+		return r.toString(16);
+	});
+}
+
+function benchmark(name, fn)
+{
+	var time = Date.now();
+	var iterations = 0;
+	var elapsed = 0;
+	while (elapsed < TIME)
+	{
+		for (var i = 0; i < ITERATIONS; i++)
+		{
+			fn();
+		}
+		iterations += ITERATIONS;
+		elapsed = Date.now() - time;
+	}
+	var secs = elapsed / 1000;
+	var its = iterations / secs;
+	console.log('Function ' + name + ' running for ' + Math.round(secs * 100) / 100 + ' second: ' + its.toExponential() + ' iterations per second');
+}
+
+runBenchmarks();
+
