@@ -6,6 +6,7 @@
  */
 
 // requires
+require('prototypes');
 var crypto = require('crypto');
 var util = require('util');
 var Log = require('log');
