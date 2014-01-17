@@ -1,0 +1,26 @@
+{
+	"name": "performance",
+	"version": "0.0.1",
+	"description": "A short and quick way to assess performance on a server.",
+	"homepage": "https://github.com/alexfernandez/performance",
+	"contributors": ["Alex Fernández <alexfernandeznpm@gmail.com>"],
+	"license": "MIT",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alexfernandez/performance"
+	},
+	"dependencies": {
+		"log": "*",
+		"prototypes": "*",
+		"testing": "*"
+	},
+	"keywords" : ["performance", "benchmark", "evaluation"],
+	"engines": {
+		"node": "*"
+	},
+	"scripts": {
+		"test": "node index.js"
+	},
+	"private": false
+}
