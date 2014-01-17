@@ -22,14 +22,16 @@ var original = {
 	a: 'a',
 	b: 'b',
 };
+var spanMs;
 
 
 /**
  * Run all performance benchmarks.
  */
-function runBenchmarks()
+function runBenchmarks(seconds)
 {
-	log.info('Running benchmarks');
+	spanMs = 1000 * seconds ||  TIME;
+	log.info('Running benchmarks for %s ms', spanMs);
 	var array = [];
 	var object = {};
 	for (var i = 1; i < 5; i++)
@@ -153,7 +155,7 @@ function benchmark(name, fn)
 	var time = Date.now();
 	var iterations = 0;
 	var elapsed = 0;
-	while (elapsed < TIME)
+	while (elapsed < spanMs)
 	{
 		for (var i = 0; i < ITERATIONS; i++)
 		{
@@ -167,5 +169,5 @@ function benchmark(name, fn)
 	console.log('Function ' + name + ' running for ' + Math.round(secs * 100) / 100 + ' second: ' + its.toExponential() + ' iterations per second');
 }
 
-runBenchmarks();
+runBenchmarks(process.argv[2]);
 
