@@ -148,6 +148,26 @@ function runBenchmarks(seconds)
 		var r = parseInt(Math.random() * 1000000000);
 		return r.toString(16);
 	});
+	benchmark('buffer concat', function()
+	{
+		var buffer = new Buffer('hello');
+		var buffers = [];
+		for (var i = 0; i < 10; i++)
+		{
+			buffers.push(buffer);
+		}
+		return Buffer.concat(buffers).toString('utf8');
+	});
+	benchmark ('string concat', function()
+	{
+		var string = 'hello';
+		var result = '';
+		for (var i = 0; i < 10; i++)
+		{
+			result += string;
+		}
+		return result;
+	});
 }
 
 function benchmark(name, fn)
