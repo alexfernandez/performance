@@ -168,6 +168,16 @@ function runBenchmarks(seconds)
 		}
 		return result;
 	});
+	benchmark ('string array concat', function()
+	{
+		var string = 'hello';
+		var result = [];
+		for (var i = 0; i < 10; i++)
+		{
+			result.push(string);
+		}
+		return result.join('');
+	});
 }
 
 function benchmark(name, fn)
