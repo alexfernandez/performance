@@ -14,6 +14,7 @@ var Log = require('log');
 // constants
 var TIME = 1000;
 var ITERATIONS = 1000;
+var ARRAY_SIZE = 1000;
 
 // globals
 var log = new Log('info');
@@ -32,11 +33,11 @@ function runBenchmarks(seconds)
 {
 	spanMs = 1000 * seconds ||  TIME;
 	log.info('Running benchmarks for %s ms', spanMs);
-	var array = [];
+	var longArray = [];
 	var object = {};
-	for (var i = 1; i < 5; i++)
+	for (var i = 0; i < ARRAY_SIZE; i++)
 	{
-		array.push(i);
+		longArray.push(i);
 		object[i] = i;
 	}
 	benchmark('nil', function()
@@ -102,11 +103,11 @@ function runBenchmarks(seconds)
 	});
 	benchmark('array access', function()
 	{
-		for (var index in array)
+		for (var index in longArray)
 		{
-			if (array[index] == '6')
+			if (longArray[index] == '6')
 			{
-				return array[index];
+				return longArray[index];
 			}
 		}
 		return null;
@@ -158,7 +159,7 @@ function runBenchmarks(seconds)
 		}
 		return Buffer.concat(buffers).toString('utf8');
 	});
-	benchmark ('string concat', function()
+	benchmark('string concat', function()
 	{
 		var string = 'hello';
 		var result = '';
@@ -168,7 +169,7 @@ function runBenchmarks(seconds)
 		}
 		return result;
 	});
-	benchmark ('string array concat', function()
+	benchmark('string array concat', function()
 	{
 		var string = 'hello';
 		var result = [];
@@ -178,6 +179,49 @@ function runBenchmarks(seconds)
 		}
 		return result.join('');
 	});
+	benchmark('for loop', function()
+	{
+		var total = 0;
+		for (var i = 0; i < longArray.length; i++)
+		{
+			total += longArray[i];
+		}
+	});
+	benchmark('forEach()', function()
+	{
+		var total = 0;
+		longArray.forEach(function(element)
+		{
+			total += element;
+		});
+	});
+	benchmark('for..in', function()
+	{
+		var total = 0;
+		for (var i in longArray)
+		{
+			total += longArray[i];
+		}
+	});
+	benchmark('for function', function()
+	{
+		var total = 0;
+		forFun(longArray, function(element)
+		{
+			total += element;
+		});
+	});
+}
+
+function forFun(array, callback)
+{
+	for (var i = 0; i < array.length; i++)
+	{
+		if (array[i] !== undefined)
+		{
+			callback(array[i]);
+		}
+	}
 }
 
 function benchmark(name, fn)
