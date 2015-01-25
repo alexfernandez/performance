@@ -101,7 +101,7 @@ function runBenchmarks(seconds)
 	{
 		return Date.now() + "_" + Math.random().toString().substring(2);
 	});
-	benchmark('array access', function()
+	benchmark('array-access', function()
 	{
 		for (var index in longArray)
 		{
@@ -112,7 +112,7 @@ function runBenchmarks(seconds)
 		}
 		return null;
 	});
-	benchmark('object access', function()
+	benchmark('object-access', function()
 	{
 		for (var key in object)
 		{
@@ -123,15 +123,15 @@ function runBenchmarks(seconds)
 		}
 		return null;
 	});
-	benchmark('string +', function()
+	benchmark('string+', function()
 	{
 		return 'a' + 'b' + '12' + 'd';
 	});
-	benchmark('string replace', function()
+	benchmark('string-replace', function()
 	{
 		return 'abcd'.replace('12');
 	});
-	benchmark('string replace all', function()
+	benchmark('string-replace-all', function()
 	{
 		return 'abcd'.replaceAll('12');
 	});
@@ -140,7 +140,7 @@ function runBenchmarks(seconds)
 	{
 		return parseInt(number);
 	});
-	benchmark('| 0', function()
+	benchmark('|0', function()
 	{
 		return number | 0;
 	});
@@ -149,7 +149,7 @@ function runBenchmarks(seconds)
 		var r = parseInt(Math.random() * 1000000000);
 		return r.toString(16);
 	});
-	benchmark('buffer concat', function()
+	benchmark('buffer-concat', function()
 	{
 		var buffer = new Buffer('hello');
 		var buffers = [];
@@ -159,7 +159,7 @@ function runBenchmarks(seconds)
 		}
 		return Buffer.concat(buffers).toString('utf8');
 	});
-	benchmark('string concat', function()
+	benchmark('string-concat', function()
 	{
 		var string = 'hello';
 		var result = '';
@@ -169,7 +169,7 @@ function runBenchmarks(seconds)
 		}
 		return result;
 	});
-	benchmark('string array concat', function()
+	benchmark('string-array-concat', function()
 	{
 		var string = 'hello';
 		var result = [];
@@ -179,7 +179,7 @@ function runBenchmarks(seconds)
 		}
 		return result.join('');
 	});
-	benchmark('for loop', function()
+	benchmark('for-loop', function()
 	{
 		var total = 0;
 		for (var i = 0; i < longArray.length; i++)
@@ -203,7 +203,7 @@ function runBenchmarks(seconds)
 			total += longArray[i];
 		}
 	});
-	benchmark('for function', function()
+	benchmark('for-function', function()
 	{
 		var total = 0;
 		forFun(longArray, function(element)
