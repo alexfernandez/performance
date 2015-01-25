@@ -13,14 +13,18 @@
 	"dependencies": {
 		"log": "*",
 		"prototypes": "*",
+		"stdio": "*",
 		"testing": "*"
 	},
 	"keywords" : ["performance", "benchmark", "evaluation"],
 	"engines": {
 		"node": "*"
 	},
+	"bin": {
+		"performance": "bin/performance.js"
+	},
 	"scripts": {
-		"start": "node index.js",
+		"start": "node bin/performance.js",
 		"test": "node index.js"
 	},
 	"private": false

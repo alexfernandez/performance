@@ -15,9 +15,21 @@ and run with:
 You will get a measurement of performance on that particular machine,
 which can be compared with other instances.
 
+### Binary
+
+If you want to install a binary that you can run from any path:
+
+    $ sudo npm install -g performance
+
+And the binary will be called simply performance:
+
+    $ performance
+
+You can run it from any path and with any user.
+
 ## Sample run
 
-On my machine: Intel(R) Core(TM) i3-2120T CPU @ 2.60GHz.
+On my machine with Node.js v0.10.25: Intel(R) Core(TM) i3-2120T CPU @ 2.60GHz.
 
 ```
 $ npm start
