@@ -1,6 +1,6 @@
 {
 	"name": "performance",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "A short and quick way to assess performance on a server.",
 	"homepage": "https://github.com/alexfernandez/performance",
 	"contributors": ["Alex Fernández <alexfernandeznpm@gmail.com>"],
