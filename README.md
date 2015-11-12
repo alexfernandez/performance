@@ -27,6 +27,31 @@ And the binary will be called simply performance:
 
 You can run it from any path and with any user.
 
+### Programmatic Use
+
+Once installed, you can use performance from your own packages.
+Simply require it,
+and invoke the function `runBenchmarks()`:
+
+```
+var performance = require('performance');
+var results = performance.runBenchmarks();
+console.log(results);
+```
+
+This will show an object with a lot of results, each with iterations per second and nanoseconds per iteration:
+
+```
+{
+	nil: {
+            seconds: 1.03,
+            ips: 1.65844e+8,
+            ns: 6,
+    },
+	...
+}
+```
+
 ## Sample run
 
 On my machine with Node.js v0.10.25: Intel(R) Core(TM) i3-2120T CPU @ 2.60GHz.

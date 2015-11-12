@@ -13,7 +13,9 @@ var packageJson = require(__dirname + '/../package.json');
 
 // init
 var options = stdio.getopt({
+	seconds: {key: 's', args: 1, description: 'Number of seconds to run'},
 	version: {key: 'v', description: 'Show version number and exit'},
+	json: {key: 'j', description: 'Show benchmark results in JSON format'},
 });
 if (options.version)
 {
@@ -21,11 +23,5 @@ if (options.version)
 	process.exit(0);
 }
 
-var seconds;
-if (options.args)
-{
-	seconds = options.args[0];
-}
-
-performance.runBenchmarks(seconds);
+performance.runBenchmarks(options);
 
