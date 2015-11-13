@@ -27,7 +27,7 @@ And the binary will be called simply performance:
 
 You can run it from any path and with any user.
 
-#### options
+#### Options
 
 * *file*: Output results to a file. `performance --file out.txt` is equivalent
   to `performance > out.txt`
