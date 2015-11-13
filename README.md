@@ -27,11 +27,19 @@ And the binary will be called simply performance:
 
 You can run it from any path and with any user.
 
+#### Options
+
+* *file*: Output results to a file. `performance --file out.txt` is equivalent
+  to `performance > out.txt`
+* *json*: Show benchmark results in JSON format
+* *seconds*: Number of seconds to run
+* *version*: Show version number and exit
+
 ### Programmatic Use
 
-Once installed, you can use performance from your own packages.
-Simply require it,
-and invoke the function `runBenchmarks()`:
+Once installed, you can use performance from your own packages. Simply require
+it, and invoke the function `runBenchmarks()`. It accept an object with the same
+options as running it from the CLI:
 
 ```
 var performance = require('performance');
@@ -123,4 +131,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
