@@ -13,7 +13,7 @@ var packageJson = require(__dirname + '/../package.json');
 
 // init
 var options = stdio.getopt({
-	file: {key: 'f', args: 1, description: 'Output results to a file', default: null},
+	file: {key: 'f', args: 1, description: 'Output results to a file', default: ''},
 	json: {key: 'j', description: 'Show benchmark results in JSON format'},
 	seconds: {key: 's', args: 1, description: 'Number of seconds to run', default: 0},
 	version: {key: 'v', description: 'Show version number and exit'},
