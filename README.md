@@ -1,5 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/alexfernandez/performance.svg)](http://travis-ci.org/alexfernandez/performance)
+
 [![NPM](https://nodei.co/npm/performance.png?downloads=true)](https://nodei.co/npm/performance/)
+
 [![Package quality](http://packagequality.com/badge/performance.png)](http://packagequality.com/#?package=performance)
 
 # performance
