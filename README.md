@@ -62,39 +62,38 @@ This will show an object with a lot of results, each with iterations per second 
 
 ## Sample run
 
-On my machine with Node.js v0.10.25: Intel(R) Core(TM) i3-2120T CPU @ 2.60GHz.
+On an amd64 server for [Travis-CI](https://travis-ci.org/) with Node.js v10.20.1:
 
 ```
-$ npm start
+$ npm test
 
-> performance@0.0.2 start /home/chenno/projects/performance
+> performance@1.3.0 test /home/travis/build/alexfernandez/performance
 > node index.js
 
-[Mon Nov 10 2014 11:42:42 GMT+0100 (CET)] INFO Running benchmarks for 1000 ms
-Function nil running for 1 second: 1.55439e+8 iterations per second
-Function util._extend() running for 1 second: 5.3891e+7 iterations per second
-Function sha1-token running for 1 second: 1.9223107569721114e+5 iterations per second
-Function sha256-token running for 1.01 second: 1.8172790466732872e+5 iterations per second
-Function replaceAll() running for 1 second: 4.445554445554446e+5 iterations per second
-Function match().join() running for 1 second: 8.09e+5 iterations per second
-Function for().toLowerCase() running for 1 second: 8.86e+5 iterations per second
-Function for().charCodeAt() running for 1 second: 1.974e+6 iterations per second
-Function timestamp running for 1 second: 1.671e+6 iterations per second
-Function array access running for 1 second: 4.087736789631107e+4 iterations per second
-Function object access running for 1.02 second: 3.7401574803149604e+4 iterations per second
-Function string + running for 1 second: 2.1568e+7 iterations per second
-Function string replace running for 1 second: 1.5356e+7 iterations per second
-Function string replace all running for 1 second: 4.11e+6 iterations per second
-Function parseInt running for 1 second: 2.9648e+7 iterations per second
-Function | 0 running for 1 second: 2.2428e+7 iterations per second
-Function Math.random() running for 1 second: 3.822e+6 iterations per second
-Function buffer concat running for 1 second: 1.9541375872382853e+5 iterations per second
-Function string concat running for 1 second: 8.959e+6 iterations per second
-Function string array concat running for 1 second: 4.184e+6 iterations per second
-Function for loop running for 1 second: 4.2657342657342664e+5 iterations per second
-Function forEach() running for 1.01 second: 2.180376610505451e+4 iterations per second
-Function for..in running for 1.03 second: 1.0689990281827017e+4 iterations per second
-Function for function running for 1 second: 1.00597609561753e+5 iterations per second
+Running benchmarks for 1000 ms
+Function nil running for 1.00 seconds: 1.042137e+9 iterations per second, 1 ns per iteration
+Function util._extend() running for 1.00 seconds: 1.56934e+8 iterations per second, 6 ns per iteration
+Function Object.keys() running for 1.08 seconds: 6.487488415199259e+3 iterations per second, 154143 ns per iteration
+Function sha1-token running for 1.00 seconds: 4.16e+5 iterations per second, 2404 ns per iteration
+Function sha256-token running for 1.00 seconds: 3.806193806193807e+5 iterations per second, 2627 ns per iteration
+Function replace-regexp() running for 1.00 seconds: 1.834e+6 iterations per second, 545 ns per iteration
+Function match().join() running for 1.00 seconds: 2.47e+6 iterations per second, 405 ns per iteration
+Function for().toLowerCase() running for 1.00 seconds: 2.399e+6 iterations per second, 417 ns per iteration
+Function for().charCodeAt() running for 1.00 seconds: 3.902e+6 iterations per second, 256 ns per iteration
+Function timestamp running for 1.00 seconds: 2.325e+6 iterations per second, 430 ns per iteration
+Function array-access running for 1.09 seconds: 6.439742410303588e+3 iterations per second, 155286 ns per iteration
+Function object-access running for 1.11 seconds: 6.323396567299006e+3 iterations per second, 158143 ns per iteration
+Function string+ running for 1.00 seconds: 1.83771e+8 iterations per second, 5 ns per iteration
+Function string-replace running for 1.00 seconds: 3.625e+7 iterations per second, 28 ns per iteration
+Function string-replace-regexp running for 1.00 seconds: 1.8935e+7 iterations per second, 53 ns per iteration
+Function parseInt running for 1.00 seconds: 1.27524e+8 iterations per second, 8 ns per iteration
+Function |0 running for 1.00 seconds: 1.84153e+8 iterations per second, 5 ns per iteration
+Function Math.random() running for 1.00 seconds: 1.929e+6 iterations per second, 518 ns per iteration
+Function string-concat running for 1.00 seconds: 1.4053e+7 iterations per second, 71 ns per iteration
+Function string-array-concat running for 1.00 seconds: 2.938e+6 iterations per second, 340 ns per iteration
+Function for-loop running for 1.00 seconds: 1.1144278606965176e+5 iterations per second, 8973 ns per iteration
+Function forEach() running for 1.00 seconds: 3.0876494023904383e+4 iterations per second, 32387 ns per iteration
+Function process.hrtime() running for 1.00 seconds: 1.6807e+7 iterations per second, 59 ns per iteration
 ```
 
 It is similar to the performance on a large Amazon AWS instance. Note that most of the time,
@@ -124,7 +123,7 @@ Don't forget to send a Pull Request!
 
 ## The MIT License
 
-Copyright (c) 2014 Alex Fernández <alexfernandeznpm@gmail.com>
+Copyright (c) 2014-2020 Alex Fernández <alexfernandeznpm@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
