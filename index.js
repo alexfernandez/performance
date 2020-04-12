@@ -6,7 +6,6 @@
  */
 
 // requires
-require('prototypes');
 var performance = require('./lib/performance.js');
 
 
