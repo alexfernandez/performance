@@ -6,7 +6,7 @@
 
 # performance
 
-A short and slick node.js performance measurement.
+A short and slick Node.js performance measurement.
 
 ## Installation
 
