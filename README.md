@@ -17,7 +17,7 @@ which can be compared with other instances.
 
 ### Binary
 
-If you want to install a binary that you can run from any path:
+Install globally to get a binary that you can run from any path:
 
     $ sudo npm install -g performance
 
@@ -29,11 +29,11 @@ You can run it from any path and with any user.
 
 #### Options
 
-* *file*: Output results to a file. `performance --file out.txt` is equivalent
+* `--file`: Output results to a file. `performance --file out.txt` is equivalent
   to `performance > out.txt`
-* *json*: Show benchmark results in JSON format
-* *seconds*: Number of seconds to run
-* *version*: Show version number and exit
+* `--json`: Show benchmark results in JSON format
+* `--seconds`: Number of seconds to run
+* `--version`: Show version number and exit
 
 ### Programmatic Use
 
