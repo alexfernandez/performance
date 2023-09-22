@@ -1,19 +1,11 @@
-'use strict';
-
 /**
  * Performance measurements.
  * (C) 2014-2015 Alex Fernández.
  */
 
-// requires
-const performance = require('./lib/performance.js');
+import {runBenchmarks} from './lib/performance.js'
 
+export default runBenchmarks
 
-exports.runBenchmarks = performance.runBenchmarks;
-
-// run if invoked directly
-if (__filename == process.argv[1])
-{
-	exports.runBenchmarks();
-}
+export * from './lib/performance.js'
 

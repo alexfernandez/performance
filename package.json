@@ -1,6 +1,7 @@
 {
 	"name": "performance",
 	"version": "1.4.0",
+	"type": "module",
 	"description": "A short and quick way to assess performance on a server.",
 	"homepage": "https://github.com/alexfernandez/performance",
 	"contributors": [

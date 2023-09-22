@@ -1,15 +1,13 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
  * Binary to check performance.
  * (C) 2014 Alex Fernández.
  */
 
-// requires
-const stdio = require('stdio');
-const performance = require('../lib/performance.js');
-const packageJson = require(__dirname + '/../package.json');
+import {readFile} from 'fs/promises'
+import stdio from 'stdio'
+import {runBenchmarks} from '../lib/performance.js'
 
 // init
 const options = stdio.getopt({
@@ -20,8 +18,9 @@ const options = stdio.getopt({
 });
 if (options.version)
 {
+	const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url)))
 	console.log('Loadtest version: %s', packageJson.version);
 	process.exit(0);
 }
 
-performance.runBenchmarks(options);
+runBenchmarks(options);
