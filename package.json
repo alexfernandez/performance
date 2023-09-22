@@ -13,7 +13,9 @@
 		"url": "https://github.com/alexfernandez/performance"
 	},
 	"dependencies": {
-		"stdio": "*",
+		"stdio": "*"
+	},
+	"devDependencies": {
 		"testing": "*"
 	},
 	"keywords": [
