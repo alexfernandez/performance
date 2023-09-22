@@ -6,7 +6,7 @@
  */
 
 // requires
-var performance = require('./lib/performance.js');
+const performance = require('./lib/performance.js');
 
 
 exports.runBenchmarks = performance.runBenchmarks;
