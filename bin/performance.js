@@ -15,11 +15,11 @@ const options = stdio.getopt({
 	json: {key: 'j', description: 'Show benchmark results in JSON format'},
 	seconds: {key: 's', args: 1, description: 'Number of seconds to run', default: 0},
 	version: {key: 'v', description: 'Show version number and exit'},
-});
+})
 if (options.version) {
 	const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url)))
-	console.log('Loadtest version: %s', packageJson.version);
-	process.exit(0);
+	console.log('Loadtest version: %s', packageJson.version)
+	process.exit(0)
 }
 
-runBenchmarks(options);
+runBenchmarks(options)
